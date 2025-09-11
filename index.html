@@ -176,7 +176,7 @@
         <a class="project-link" onclick="loadReadme('dataanalytics_portfolio_projects','ProductAnalyticsPyramidMetricTreeGenerator')">ProductAnalyticsPyramidMetricTreeGenerator</a>
       </details>
 
-      <details open>
+      <details>
         <summary>Integration portfolio</summary>
         <a class="project-link" onclick="loadReadme('integration_portfolio_projects','OIC_1GBFileProcessing')">OIC_1GBFileProcessing</a>
         <a class="project-link" onclick="loadReadme('integration_portfolio_projects','OIC_ChatWithERP_Email_OIC_HCMCloud_GenAI')">OIC_ChatWithERP_Email_OIC_HCMCloud_GenAI</a>
@@ -185,12 +185,12 @@
         <a class="project-link" onclick="loadReadme('integration_portfolio_projects','SOA_3LayerFileTransferSystemWithMonitoringResubmissionGuaranteedDelivery')">Three-Layer File Transfer System</a>
       </details>
 
-      <details open>
+      <details>
         <summary>Node.js portfolio</summary>
         <a class="project-link" onclick="loadReadme('nodejs_portfolio_projects','blockchain_listener')">blockchain_listener</a>
       </details>
 
-      <details open>
+      <details>
         <summary>Python portfolio</summary>
         <a class="project-link" onclick="loadReadme('python_portfolio_projects','Multigraph')">Multigraph</a>
         <a class="project-link" onclick="loadReadme('python_portfolio_projects','NFTGenerativeArt')">NFTGenerativeArt (SamilaPython)</a>
@@ -198,7 +198,7 @@
         <a class="project-link" onclick="loadReadme('python_portfolio_projects','PythonToExe_QuizGame')">PythonToExe_QuizGame</a>
       </details>
 
-      <details open>
+      <details>
         <summary>Solidity portfolio</summary>
         <a class="project-link" onclick="loadReadme('solidity_portfolio_projects','UpgradableContract')">UpgradableContract</a>
         <a class="project-link" onclick="loadReadme('solidity_portfolio_projects','chainlink_priceoracle')">chainlink_priceoracle</a>
@@ -210,14 +210,14 @@
       <details open>
         <summary>Blog Articles</summary>
       <a class="project-link" onclick="loadLocal('posts/2025-09-11-Understanding_what_is_a_ml_model.html')">
-  Analogy to understand what is a ML model
+  Understand what is a ML model using an analogy
 </a></details>
     </aside>
 
     <main class="content" id="content">
       <div class="card" id="mainCard">
         <h1>Welcome</h1>
-        <p><strong>Amit Gupta</strong> — GenAI &amp; ML Developer. This portfolio showcases my projects across Generative AI, Machine Learning, Data Analytics, Integration and Blockchain. Click any project on the left to view the full README (rendered here).</p>
+        <p><strong>Amit Gupta</strong> — GenAI &amp; ML Developer. This portfolio showcases my projects across Generative AI, Machine Learning, Data Analytics, Integration and Blockchain. Click any project on the left to view the details).</p>
       </div>
     </main>
   </div>
@@ -285,7 +285,7 @@
     }
 
     async function loadReadme(repo, folder){
-      setContent('<div class="card"><div class="muted">Loading README…</div></div>');
+      setContent('<div class="card"><div class="muted">Loading …</div></div>');
       const res = await tryFetchRaw(repo, folder);
       if (res.ok){
         const html = `<div class="markdown">${renderMarkdown(res.text)}</div>
