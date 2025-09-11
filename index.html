@@ -353,7 +353,10 @@
         setContent(`<div class="card"><h1>Not found</h1><p class="muted">Could not load <strong>${path}</strong>. Make sure the file exists and is accessible. Error: ${err.message}</p></div>`);
       }
     }
-
+  // Load home page by default
+  window.onload = () => {
+    loadLocal("home.htm");
+  };
 
   </script>
 </body>
