@@ -213,11 +213,13 @@
         });
     }
 
-    function setContent(html){
+    async function setContent(html){
       html = processMermaidDiagrams(html);
       document.getElementById('mainCard').innerHTML = html;
       // scroll top
       document.getElementById('content').scrollTop = 0;
+      // Re-run mermaid for new diagrams
+      await mermaid.run();
     }
 
     function renderMarkdown(md){
