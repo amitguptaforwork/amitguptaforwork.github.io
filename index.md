@@ -6,4 +6,4 @@ title: "Home"
 
 Welcome to my personal site.
 
-[Projects](/projects/) | [Articles](/articles/) | [About](/about/)
+[Projects](/projects/) | [Articles](/articles/) | [About](about.md)
