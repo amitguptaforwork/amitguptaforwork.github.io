@@ -10,9 +10,10 @@
   <!-- Mermaid.js for diagram rendering -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
 
-  <!-- Highlight.js for better code syntax highlighting (optional but recommended) -->
+  <!-- Highlight.js for better code syntax highlighting -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
   <style>
     :root{
       --bg: #f8fbfb;
@@ -43,7 +44,20 @@
     .brand p{margin:0;font-size:12px;color:var(--muted)}
 
     .section-title{font-size:13px;color:var(--muted);margin:14px 0 6px;padding-top:6px}
-    details{margin-left:0;margin-bottom:8px}
+
+    /* Smooth <details> animation */
+    details {
+      margin-left:0;
+      margin-bottom:8px;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    details[open] {
+      max-height: 1000px; /* big enough for contents */
+    }
+    details:not([open]) {
+      max-height: 2.5em; /* only summary visible */
+    }
     details summary{
       list-style:none;
       cursor:pointer;
@@ -54,6 +68,7 @@
       outline:none;
     }
     details[open] summary{ background:linear-gradient(90deg, rgba(11,114,133,0.06), transparent); }
+
     .project-link{
       display:block;
       margin-left:14px;
@@ -93,7 +108,7 @@
       .content{padding:18px}
     }
 
-    /* Markdown content styling (rendered README) */
+    /* Markdown content styling */
     .markdown h1,.markdown h2,.markdown h3{color:var(--text)}
     .markdown pre{background:#0b1720;color:#dbeafe;padding:12px;border-radius:8px;overflow:auto}
     .markdown code{background:#f3f7f8;padding:2px 6px;border-radius:6px}
@@ -101,7 +116,6 @@
     .markdown table{border-collapse:collapse;width:100%}
     .markdown table th, .markdown table td{border:1px solid #e6eef0;padding:8px}
     .muted{color:var(--muted);font-size:13px}
-
 
     /* Dark theme code blocks */
     pre {
@@ -112,7 +126,6 @@
         overflow-x: auto;
         margin: 16px 0;
     }
-
     code {
         background-color: #161b22 !important;
         color: #e6edf3 !important;
@@ -120,12 +133,10 @@
         border-radius: 3px;
         font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     }
-
     pre code {
         background-color: transparent !important;
         padding: 0;
     }
-
     .mermaid {
         text-align: center;
         margin: 20px 0;
@@ -133,9 +144,6 @@
         border-radius: 8px;
         padding: 20px;
     }
-
-
-
   </style>
 </head>
 <body>
@@ -158,7 +166,7 @@
         <a class="project-link" onclick="loadReadme('genai_portfolio_projects','RAG-MultiPDF')">RAG-MultiPDF</a>
       </details>
 
-      <details>
+      <details open>
         <summary>Data analytics portfolio</summary>
         <a class="project-link" onclick="loadReadme('dataanalytics_portfolio_projects','CaseStudyAerofit-Exploring%20Descriptive%20Statistics%20and%20Probability')">AeroFit Case Study</a>
         <a class="project-link" onclick="loadReadme('dataanalytics_portfolio_projects','CaseStudyNetflix-%20Exploring%20Data%20Exploration%20and%20Visualisation')">CaseStudyNetflix</a>
@@ -168,7 +176,7 @@
         <a class="project-link" onclick="loadReadme('dataanalytics_portfolio_projects','ProductAnalyticsPyramidMetricTreeGenerator')">ProductAnalyticsPyramidMetricTreeGenerator</a>
       </details>
 
-      <details>
+      <details open>
         <summary>Integration portfolio</summary>
         <a class="project-link" onclick="loadReadme('integration_portfolio_projects','OIC_1GBFileProcessing')">OIC_1GBFileProcessing</a>
         <a class="project-link" onclick="loadReadme('integration_portfolio_projects','OIC_ChatWithERP_Email_OIC_HCMCloud_GenAI')">OIC_ChatWithERP_Email_OIC_HCMCloud_GenAI</a>
@@ -177,12 +185,12 @@
         <a class="project-link" onclick="loadReadme('integration_portfolio_projects','SOA_3LayerFileTransferSystemWithMonitoringResubmissionGuaranteedDelivery')">Three-Layer File Transfer System</a>
       </details>
 
-      <details>
+      <details open>
         <summary>Node.js portfolio</summary>
         <a class="project-link" onclick="loadReadme('nodejs_portfolio_projects','blockchain_listener')">blockchain_listener</a>
       </details>
 
-      <details>
+      <details open>
         <summary>Python portfolio</summary>
         <a class="project-link" onclick="loadReadme('python_portfolio_projects','Multigraph')">Multigraph</a>
         <a class="project-link" onclick="loadReadme('python_portfolio_projects','NFTGenerativeArt')">NFTGenerativeArt (SamilaPython)</a>
@@ -190,7 +198,7 @@
         <a class="project-link" onclick="loadReadme('python_portfolio_projects','PythonToExe_QuizGame')">PythonToExe_QuizGame</a>
       </details>
 
-      <details>
+      <details open>
         <summary>Solidity portfolio</summary>
         <a class="project-link" onclick="loadReadme('solidity_portfolio_projects','UpgradableContract')">UpgradableContract</a>
         <a class="project-link" onclick="loadReadme('solidity_portfolio_projects','chainlink_priceoracle')">chainlink_priceoracle</a>
@@ -199,7 +207,11 @@
         <a class="project-link" onclick="loadReadme('solidity_portfolio_projects','defi_swap_uniswap')">defi_swap_uniswap</a>
         <a class="project-link" onclick="loadReadme('solidity_portfolio_projects','getbalancefrommultipleblockchains')">getbalancefrommultipleblockchains</a>
       </details>
-
+      <details open>
+        <summary>Blog Articles</summary>
+      <a class="project-link" onclick="loadLocal('posts/2025-09-11-Understanding_what_is_a_ml_model.html')">
+  Analogy to understand what is a ML model
+</a></details>
     </aside>
 
     <main class="content" id="content">
@@ -214,13 +226,15 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     const GH_USER = 'amitguptaforwork';
-
-    // Try multiple candidate filenames and branch names for robustness
-    const README_CANDIDATES = [
-      'README.md','readme.md','Readme.md','readMe.md','README.MD'
-    ];
+    const README_CANDIDATES = ['README.md','readme.md','Readme.md','readMe.md','README.MD'];
     const BRANCH_CANDIDATES = ['main','master'];
 
+    // Smooth animation polyfill for <details>
+    document.querySelectorAll("details").forEach((el) => {
+      el.addEventListener("toggle", () => {
+        el.style.transition = "max-height 0.35s ease";
+      });
+    });
     // Initialize Mermaid with dark theme
     mermaid.initialize({
         startOnLoad: true,
@@ -249,36 +263,22 @@
     async function setContent(html){
       html = processMermaidDiagrams(html);
       document.getElementById('mainCard').innerHTML = html;
-      // scroll top
       document.getElementById('content').scrollTop = 0;
-      // Re-run mermaid for new diagrams
       await mermaid.run();
-      // Highlight code blocks if using highlight.js
-      document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightElement(block);
-      });      
+      document.querySelectorAll('pre code').forEach((block) => hljs.highlightElement(block));
     }
 
-    function renderMarkdown(md){
-      // basic sanitization handled by marked; consider adding a sanitizer if needed
-      return marked.parse(md);
-    }
+    function renderMarkdown(md){ return marked.parse(md); }
 
     async function tryFetchRaw(repo, folder){
-      // folder may already be url-encoded; ensure encoding
       const folderEncoded = encodeURIComponent(folder).replace(/%2F/g, '/');
       for (const branch of BRANCH_CANDIDATES){
         for (const fname of README_CANDIDATES){
           const url = `https://raw.githubusercontent.com/${GH_USER}/${repo}/${branch}/${folderEncoded}/${fname}`;
           try {
             const r = await fetch(url);
-            if (r.ok){
-              const txt = await r.text();
-              return {ok:true, text:txt, url};
-            }
-          } catch(e){
-            // network error; try next
-          }
+            if (r.ok){ return {ok:true, text:await r.text(), url}; }
+          } catch(e){ }
         }
       }
       return {ok:false};
@@ -288,16 +288,65 @@
       setContent('<div class="card"><div class="muted">Loading README…</div></div>');
       const res = await tryFetchRaw(repo, folder);
       if (res.ok){
-        const md = res.text;
-        const html = `<div class="markdown">${renderMarkdown(md)}</div><div class="muted" style="margin-top:12px">Source: <a href="https://github.com/${GH_USER}/${repo}/tree/main/${encodeURIComponent(folder)}" target="_blank" rel="noreferrer">github/${repo}/${folder}</a></div>`;
+        const html = `<div class="markdown">${renderMarkdown(res.text)}</div>
+          <div class="muted" style="margin-top:12px">Source: 
+          <a href="https://github.com/${GH_USER}/${repo}/tree/main/${encodeURIComponent(folder)}" 
+          target="_blank" rel="noreferrer">github/${repo}/${folder}</a></div>`;
         setContent(html);
       } else {
-        setContent('<div class="card"><h1>README not found</h1><p class="muted">Could not fetch README for <strong>' + folder + '</strong> in repository <strong>' + repo + '</strong>. Please add a README.md file to that project folder (or notify me) and it will be displayed here automatically.</p></div>');
+        setContent(`<div class="card"><h1>README not found</h1>
+          <p class="muted">Could not fetch README for <strong>${folder}</strong> in repository <strong>${repo}</strong>.
+          Please add a README.md file to that project folder.</p></div>`);
+      }
+    }
+  
+    /* --------------------------
+      Load local HTML or Markdown
+      -------------------------- */
+
+    // Helper: extract body contents if the fetched file is a full HTML document
+    function extractBodyFragment(htmlText){
+      const m = htmlText.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      if (m && m[1]) return m[1];
+      // also try to remove <head> if present, otherwise return original
+      return htmlText.replace(/<head[\s\S]*?<\/head>/i, '');
+    }
+
+    /**
+     * loadLocal(path)
+     * - path: relative path to file in this site (e.g. "posts/2025-09-11-Understanding_what_is_a_ml_model.html")
+     * - supports .html and .md (markdown)
+     */
+    async function loadLocal(path){
+      // show loading indicator
+      setContent('<div class="card"><div class="muted">Loading…</div></div>');
+
+      try {
+        const resp = await fetch(path, { cache: "no-store" });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const text = await resp.text();
+        // if markdown file
+        if (path.toLowerCase().endsWith('.md')){
+          const mdHtml = `<div class="markdown">${renderMarkdown(text)}</div>`;
+          setContent(mdHtml);
+          return;
+        }
+        // if html file: extract body fragment (so we don't nest full <html><head> inside div)
+        if (path.toLowerCase().endsWith('.html')){
+          const fragment = extractBodyFragment(text);
+          // optionally: rewrite relative links (not doing here — keep as authored)
+          setContent(fragment);
+          return;
+        }
+        // fallback: show raw text
+        setContent(`<div class="markdown"><pre>${text.replace(/</g,'&lt;')}</pre></div>`);
+      } catch (err){
+        console.error('loadLocal error', err);
+        setContent(`<div class="card"><h1>Not found</h1><p class="muted">Could not load <strong>${path}</strong>. Make sure the file exists and is accessible. Error: ${err.message}</p></div>`);
       }
     }
 
-    // optional: load default
-    // loadReadme('genai_portfolio_projects','Agent-Mini-Cursor');
+
   </script>
 </body>
 </html>

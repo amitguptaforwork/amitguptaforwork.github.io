@@ -7,7 +7,12 @@
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Mermaid.js for diagram rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
 
+  <!-- Highlight.js for better code syntax highlighting (optional but recommended) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <style>
     :root{
       --bg: #f8fbfb;
@@ -96,6 +101,41 @@
     .markdown table{border-collapse:collapse;width:100%}
     .markdown table th, .markdown table td{border:1px solid #e6eef0;padding:8px}
     .muted{color:var(--muted);font-size:13px}
+
+
+    /* Dark theme code blocks */
+    pre {
+        background-color: #161b22 !important;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 16px;
+        overflow-x: auto;
+        margin: 16px 0;
+    }
+
+    code {
+        background-color: #161b22 !important;
+        color: #e6edf3 !important;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+
+    pre code {
+        background-color: transparent !important;
+        padding: 0;
+    }
+
+    .mermaid {
+        text-align: center;
+        margin: 20px 0;
+        background-color: transparent;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+
+
   </style>
 </head>
 <body>
@@ -116,8 +156,6 @@
         <a class="project-link" onclick="loadReadme('genai_portfolio_projects','OCR-LocalUsingOllama')">OCR-LocalUsingOllama</a>
         <a class="project-link" onclick="loadReadme('genai_portfolio_projects','RAG-CompanyProductBot')">RAG-CompanyProductBot</a>
         <a class="project-link" onclick="loadReadme('genai_portfolio_projects','RAG-MultiPDF')">RAG-MultiPDF</a>
-        <a class="project-link" href="https://github.com/amitguptaforwork/genai_portfolio_projects/blob/master/RAG-MultiPDF/readme.md" target="_blank">RAG-MultiPDF</a>
-        
       </details>
 
       <details>
@@ -183,10 +221,42 @@
     ];
     const BRANCH_CANDIDATES = ['main','master'];
 
-    function setContent(html){
+    // Initialize Mermaid with dark theme
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+            primaryColor: '#58a6ff',
+            primaryTextColor: '#e6edf3',
+            primaryBorderColor: '#30363d',
+            lineColor: '#8b949e',
+            background: '#0d1117',
+            mainBkg: '#161b22'
+        }
+    });
+    function processMermaidDiagrams(html) {
+        return html.replace(/<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g, function(match, content) {
+            const decodedContent = content
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&');
+            
+            const id = 'mermaid-' + Math.random().toString(36).substr(2, 9);
+            return `<div class="mermaid" id="${id}">${decodedContent}</div>`;
+        });
+    }
+
+    async function setContent(html){
+      html = processMermaidDiagrams(html);
       document.getElementById('mainCard').innerHTML = html;
       // scroll top
       document.getElementById('content').scrollTop = 0;
+      // Re-run mermaid for new diagrams
+      await mermaid.run();
+      // Highlight code blocks if using highlight.js
+      document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+      });      
     }
 
     function renderMarkdown(md){
