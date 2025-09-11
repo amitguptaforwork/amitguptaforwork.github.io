@@ -7,12 +7,7 @@
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Mermaid.js for diagram rendering -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
 
-  <!-- Highlight.js for better code syntax highlighting (optional but recommended) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <style>
     :root{
       --bg: #f8fbfb;
@@ -188,33 +183,7 @@
     ];
     const BRANCH_CANDIDATES = ['main','master'];
 
-    // Initialize Mermaid with dark theme
-    mermaid.initialize({
-        startOnLoad: true,
-        theme: 'dark',
-        themeVariables: {
-            primaryColor: '#58a6ff',
-            primaryTextColor: '#e6edf3',
-            primaryBorderColor: '#30363d',
-            lineColor: '#8b949e',
-            background: '#0d1117',
-            mainBkg: '#161b22'
-        }
-    });
-    function processMermaidDiagrams(html) {
-        return html.replace(/<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g, function(match, content) {
-            const decodedContent = content
-                .replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>')
-                .replace(/&amp;/g, '&');
-            
-            const id = 'mermaid-' + Math.random().toString(36).substr(2, 9);
-            return `<div class="mermaid" id="${id}">${decodedContent}</div>`;
-        });
-    }
-
     function setContent(html){
-      html = processMermaidDiagrams(html);
       document.getElementById('mainCard').innerHTML = html;
       // scroll top
       document.getElementById('content').scrollTop = 0;
