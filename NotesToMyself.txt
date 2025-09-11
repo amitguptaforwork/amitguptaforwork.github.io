@@ -1,0 +1,10 @@
+for posts, I am using word.
+
+Here is the workflow: 
+
+Create text in word, save as html
+It will generate an <filename>_files folder
+Copy this folder inside the images folder under post/images and also in images folder in root
+Edit the htm file to prepend images/ to wherever the folder was referred.
+
+Finally edit the index.html to add link to this page.
