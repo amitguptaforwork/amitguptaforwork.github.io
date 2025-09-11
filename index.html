@@ -336,7 +336,7 @@
           return;
         }
         // if html file: extract body fragment (so we don't nest full <html><head> inside div)
-        if (path.toLowerCase().contains('.htm')){
+        if (path.toLowerCase().endsWith('.html') || path.toLowerCase().endsWith('.htm') ){
           const fragment = extractBodyFragment(text);
           // optionally: rewrite relative links (not doing here — keep as authored)
           setContent(fragment);
