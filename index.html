@@ -211,7 +211,11 @@
         <summary>Blog Articles</summary>
       <a class="project-link" onclick="loadLocal('posts/2025-09-11-Understanding_what_is_a_ml_model.html')">
   Understand what is a ML model using an analogy
-</a></details>
+</a>
+<a class="project-link" onclick="loadLocal('posts/Learning_Docker_through_analogies.htm')">
+  Understand what is a ML model using an analogy
+</a>
+</details>
     </aside>
 
     <main class="content" id="content">
@@ -332,7 +336,7 @@
           return;
         }
         // if html file: extract body fragment (so we don't nest full <html><head> inside div)
-        if (path.toLowerCase().endsWith('.html')){
+        if (path.toLowerCase().contains('.htm')){
           const fragment = extractBodyFragment(text);
           // optionally: rewrite relative links (not doing here — keep as authored)
           setContent(fragment);
