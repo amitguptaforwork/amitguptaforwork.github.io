@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MCAR, MAR, MNAR Story</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .example {
+      background: #ffffff;
+      border-left: 5px solid #3498db;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+    .analogy {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 MCAR, MAR, MNAR — The Classroom Story</h1>
+
+  <div class="example">
+    <h2>1. MCAR – Missing Completely At Random</h2>
+    <p><strong>Story:</strong> A sudden <strong>gust of wind</strong> 🌬️ blows some kids’ homework papers out the window. 
+       It had nothing to do with how good or bad their work was or who they are. Pure chance!</p>
+    <p><strong>Key idea:</strong> Missingness has <u>nothing to do</u> with the student or the score. 
+       Dropping the missing ones still gives you a representative sample.</p>
+    <p class="analogy">💡 Real-world analogy: A lab machine randomly crashes and corrupts some test results.</p>
+  </div>
+
+  <div class="example">
+    <h2>2. MAR – Missing At Random</h2>
+    <p><strong>Story:</strong> Students who play <strong>football</strong> ⚽ often forget to hand in homework 
+       because practice runs late. But <em>within</em> the football group, the decision to hand in 
+       has nothing to do with how good their homework was.</p>
+    <p><strong>Key idea:</strong> Missingness is related to some <u>observed factor</u> (football), 
+       but not the actual score.</p>
+    <p class="analogy">💡 Real-world analogy: Older survey respondents are less likely to report income 
+       → depends on age (observed), not income value itself.</p>
+  </div>
+
+  <div class="example">
+    <h2>3. MNAR – Missing Not At Random</h2>
+    <p><strong>Story:</strong> Some students hide their homework if it’s <strong>really bad</strong> 🫣. 
+       The worse the homework, the more likely it goes missing.</p>
+    <p><strong>Key idea:</strong> Missingness depends <u>directly</u> on the <em>value itself</em> 
+       (bad scores → more missing). Hardest case to deal with.</p>
+    <p class="analogy">💡 Real-world analogy: High-income people avoid disclosing income → 
+       missingness depends on the true income itself.</p>
+  </div>
+
+  <h2>📝 Recap</h2>
+  <ul>
+    <li><strong>MCAR:</strong> Wind blows the papers away → purely random.</li>
+    <li><strong>MAR:</strong> Football kids forget → depends on observed (football), not score.</li>
+    <li><strong>MNAR:</strong> Kids hide bad homework → depends on actual missing value itself.</li>
+  </ul>
+
+</body>
+</html>
