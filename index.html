@@ -229,7 +229,8 @@
       <a class="project-link" onclick="loadLocal('posts/AnalogyToLearn_Docker.htm')">Understand docker using Lunchbox Analogy</a>
       <a class="project-link" onclick="loadLocal('posts/AnalogyToLearn_ERC20_token.htm')">Understand ERC20 token using Contractor Analogy</a>
       <a class="project-link" onclick="loadLocal('posts/AnalogyToLearn_TypesOfMissingData.htm')">Understand Missing Data in Data Analysis using Classroom Analogy</a>
-      <a class="project-link" onclick="https://amitguptaforwork.hashnode.dev/mcar-mar-mnar">HN</a>
+      <a class="project-link" onclick="loadExternal('https://amitguptaforwork.hashnode.dev/mcar-mar-mnar')">Understand Missing Data in Data Analysis using Shopping Cart Analogy</a>
+      <a class="project-link" onclick="loadExternal('https://amitguptaforwork.hashnode.dev/understanding-precision-and-recall-using-policeman-analogy')">Understand Precision and Recall using Policeman Analogy</a>
       
 </details>
     </aside>
@@ -331,6 +332,16 @@
       // also try to remove <head> if present, otherwise return original
       return htmlText.replace(/<head[\s\S]*?<\/head>/i, '');
     }
+
+
+  function loadExternal(url){
+    const html = `
+      <div class="card" style="height:80vh;display:flex;flex-direction:column;">
+        <div class="muted" style="margin-bottom:8px">External Article:</div>
+        <iframe src="${url}" style="flex:1;width:100%;border:none;border-radius:8px;"></iframe>
+      </div>`;
+    setContent(html);
+  }    
 
     /**
      * loadLocal(path)
