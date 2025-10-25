@@ -1,24 +1,33 @@
-for posts, I am using word.
-
-Here is the workflow: 
-
-Create text in word, save as html
-It will generate an <filename>_files folder
-Copy this folder inside the images folder under post/images and also in images folder in root
-Edit the htm file to prepend images/ to wherever the folder was referred.
-
-Finally edit the index.html to add link to this page.
-
-  <!--Add blog article links here manually-->
-      <summary>Blog Articles</summary>
+For New Projects that have readme in github
+------------------------------
+ - simply need to add link
+ - Add the link in index.html.  Example
+     <a class="project-link" onclick="loadReadme('dataanalytics_portfolio_projects','ProductAnalyticsPyramidMetricTreeGenerator')">ProductAnalyticsPyramidMetricTreeGenerator</a>
+    
 
 
+For posts, I am using word.
+------------------------------
+  Here is the workflow: 
 
-For hashnode Articles1
-1. use httrack to mirror the website  
-E:\tools\httrack_x64-noinst-3.49.2\httrack
+  Create text in word, save as html
+  It will generate an <filename>_files folder
+  Copy this folder inside the images folder under post/images and also in images folder in root
+  Edit the htm file to prepend images/ to wherever the folder was referred.
+
+  Finally edit the index.html to add link to this page.
+
+    <!--Add blog article links here manually-->
+        <summary>Blog Articles</summary>
 
 
-i already mirrored it once inside of the posts folder
-so my understading is, if i add a new articule, i can update this mirror
-and then add teh link to the Blog Articles to this local html file.      
+
+For hashnode Articles
+------------------------------
+  1. use httrack to mirror the website  
+  E:\tools\httrack_x64-noinst-3.49.2\httrack
+
+
+  i already mirrored it once inside of the posts folder
+  so my understading is, if i add a new articule, i can update this mirror
+  and then add teh link to the Blog Articles to this local html file.      
